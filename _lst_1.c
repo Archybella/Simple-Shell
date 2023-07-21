@@ -38,7 +38,7 @@ if (!strs)
 return (NULL);
 for (i = 0; node; node = node->next, i++)
 {
-str = malloc(_strlen(node->str) + 1);
+str = malloc(strlen(node->str) + 1);
 if (!str)
 {
 for (j = 0; j < i; j++)
@@ -46,7 +46,7 @@ free(strs[j]);
 free(strs);
 return (NULL);
 }
-str = _strcpy(str, node->str);
+str = strcpy(str, node->str);
 strs[i] = str;
 }
 strs[i] = NULL;
@@ -65,7 +65,7 @@ size_t i = 0;
 
 while (h)
 {
-_puts(convert_number(h->num, 10, 0));
+i_puts(convert_number(h->num, 10, 0));
 _putchar(':');
 _putchar(' ');
 _puts(h->str ? h->str : "(nil)");
