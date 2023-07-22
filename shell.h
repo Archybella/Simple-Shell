@@ -89,7 +89,7 @@ typedef struct passinfo
 	int env_changed;
 	int status;
 
-	char **cmd_buf; /* pointer to cmd ; chain buffer, for memory mangement */
+	char **cmd_buf; /* pointer to cmd ; chain buffer, for memory mangment */
 	int cmd_buf_type; /* CMD_type ||, &&, ; */
 	int readfd;
 	int histcount;
@@ -111,120 +111,110 @@ typedef struct builtin
 } builtin_table;
 
 
-/* toem_shloop.c */
-int hsh(info_t *, char **);
+/* toem_is_atoi.c */
+int toem_is_delim(char, char *);
+int toem_isalpha(int);
+int toem_atoi(char *);
 
-/* toem_parser.c */
-int is_cmd(info_t *, char *);
-char *dup_chars(char *, int, int);
-char *find_path(info_t *, char *, char *);
+/* toem_builtin_extra.c */
+int toem_handle_history(info_t *);
+int toem_handle_alias(info_t *);
 
-/* loophsh.c */
-int loophsh(char **);
+/* toem_inbuilt.c */
+int toem_handle_exit(info_t *);
+int toem_handle_cd(info_t *);
+int toem_handle_help(info_t *);
 
-/* toem_errors.c */
-void _eputs(char *);
-int _eputchar(char);
-int _putfd(char c, int fd);
-int _putsfd(char *str, int fd);
+/* toem_environment.c */
+char *toem_getenv(info_t *, const char *);
+int toem_handle_env(info_t *);
+int toem_handle_setenv(info_t *);
+int toem_handle_unsetenv(info_t *);
+int toem_populate_env_list(info_t *);
 
-/* toem_string.c */
-int _strlen(char *);
-int _strcmp(char *, char *);
-char *starts_with(const char *, const char *);
-char *_strcat(char *, char *);
+/* toem_psb_errors.c */
+void toem_eputs(char *);
+int toem_eputchar(char);
+int toem_putfd(char c, int fd);
+int toem_putsfd(char *str, int fd);
 
-/* toem_string1.c */
-char *_strcpy(char *, char *);
-char *_strdup(const char *);
-void _puts(char *);
-int _putchar(char);
+/* toem_psb_errors1.c */
+int toem_erratoi(char *);
+void toem_print_error(info_t *, char *);
+int toem_print_d(int, int);
+char *toem_convert_number(long int, int, int);
+void toem_remove_comments(char *);
 
-/* toem_exits.c */
-char *_strncpy(char *, char *, int);
-char *_strncat(char *, char *, int);
-char *_strchr(char *, char);
+/* toem_psb_exits.c */
+char *toem_strncpy(char *, char *, int);
+char *toem_strncat(char *, char *, int);
+char *toem_strchr(char *, char);
 
-/* toem_tokenizer.c */
-char **strtow(char *, char *);
-char **strtow2(char *, char);
+/* toem_get_line.c */
+ssize_t toem_get_input(info_t *);
+int toem_getline(info_t *, char **, size_t *);
+void toem_sigintHandler(int);
 
-/* toem_realloc.c */
-char *_memset(char *, char, unsigned int);
-void ffree(char **);
-void *_realloc(void *, unsigned int, unsigned int);
+/* toem_get_information.c */
+void toem_clear_info(info_t *);
+void toem_set_info(info_t *, char **);
+void toem_free_info(info_t *, int);
 
-/* toem_memory.c */
-int bfree(void **);
+/* toem_hstry.c */
+int toem_write_history(info_t *info);
+int toem_read_history(info_t *info);
+int toem_build_history_list(info_t *info, char *buf, int linecount);
 
-/* toem_atoi.c */
-int is_delim(char, char *);
-int _isalpha(int);
-int _atoi(char *);
+/* toem_lst.c */
+list_t *toem_add_node(list_t **, const char *, int);
+list_t *toem_add_node_end(list_t **, const char *, int);
+size_t toem_print_list_str(const list_t *);
+int toem_delete_node_at_index(list_t **, unsigned int);
+void toem_free_list(list_t **);
 
-/* toem_errors1.c */
-int _erratoi(char *);
-void print_error(info_t *, char *);
-int print_d(int, int);
-char *convert_number(long int, int, int);
-void remove_comments(char *);
+/* toem_lst_1.c */
+size_t toem_list_len(const list_t *);
+char **toem_list_to_strings(list_t *);
+size_t toem_print_list(const list_t *);
+list_t *toem_node_starts_with(list_t *, char *, char);
+ssize_t toem_get_node_index(list_t *, list_t *);
 
-/* toem_builtin.c */
-int handle_exit(info_t *);
-int handle_cd(info_t *);
-int handle_help(info_t *);
+/* toem_mem_mangmnt.c */
+int toem_bfree(void **);
 
-/* toem_builtin1.c */
-int handle_history(info_t *);
-int handle_alias(info_t *);
+/* toem_chk_dub_exe.c */
+int toem_is_chain(info_t *, char *, size_t *);
+void toem_check_chain(info_t *, char *, size_t *, size_t, size_t);
 
-/*toem_getline.c */
-ssize_t get_input(info_t *);
-int _getline(info_t *, char **, size_t *);
-void sigintHandler(int);
+/* toem_mem_realloc.c */
+char *toem_memset(char *, char, unsigned int);
+void toem_ffree(char **);
+void *toem_realloc(void *, unsigned int, unsigned int);
 
-/* toem_getinfo.c */
-void clear_info(info_t *);
-void set_info(info_t *, char **);
-void free_info(info_t *, int);
+/* toem_shell_condition.c */
+int toem_loophsh(char **);
 
-/* toem_environ.c */
-char *_getenv(info_t *, const char *);
-int handle_env(info_t *);
-int handle_setenv(info_t *);
-int handle_unsetenv(info_t *);
-int populate_env_list(info_t *);
+/* toem_strn_len.c */
+int toem_strlen(char *);
+int toem_strcmp(char *, char *);
+char *toem_starts_with(const char *, const char *);
+char *toem_strcat(char *, char *);
 
-/* toem_getenv.c */
-char **get_environ(info_t *);
-int _unsetenv(info_t *, char *);
-int _setenv(info_t *, char *, char *);
+/* toem_strn_len1.c */
+char *toem_strcpy(char *, char *);
+char *toem_strdup(const char *);
+void toem_puts(char *);
+int toem_putchar(char);
 
-/* toem_history.c */
-int write_history(info_t *info);
-int read_history(info_t *info);
-int build_history_list(info_t *info, char *buf, int linecount);
+/* toem_split_strn.c */
+char **toem_strtow(char *, char *);
+char **toem_strtow2(char *, char);
 
-/* toem_lists.c */
-list_t *add_node(list_t **, const char *, int);
-list_t *add_node_end(list_t **, const char *, int);
-size_t print_list_str(const list_t *);
-int delete_node_at_index(list_t **, unsigned int);
-void free_list(list_t **);
-
-/* toem_lists1.c */
-size_t list_len(const list_t *);
-char **list_to_strings(list_t *);
-size_t print_list(const list_t *);
-list_t *node_starts_with(list_t *, char *, char);
-ssize_t get_node_index(list_t *, list_t *);
-
-/* toem_vars.c */
-int is_chain(info_t *, char *, size_t *);
-void check_chain(info_t *, char *, size_t *, size_t, size_t);
-int replace_alias(info_t *);
-int replace_vars(info_t *);
-int replace_string(char **, char *);
+/* toem_char_handler.c */
+int toem_replace_alias(info_t *);
+int toem_replace_vars(info_t *);
+int toem_replace_string(char **, char *);
 
 #endif
+
 
