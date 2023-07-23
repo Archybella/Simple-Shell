@@ -1,11 +1,11 @@
 #include "shell.h"
 
 /**
- * list_len - determines length of linked list
- * @h: pointer to first node
- *
- * Return: size of list
- */
+ * list_len - Calculates the size of a linked list
+* @h: Memory address to first node of the list
+*
+* Return: number of nodes in the list
+*/
 size_t list_len(const list_t *h)
 {
 	size_t i = 0;
@@ -19,11 +19,11 @@ size_t list_len(const list_t *h)
 }
 
 /**
- * list_to_strings - returns an array of strings of the list->str
- * @head: pointer to first node
- *
- * Return: array of strings
- */
+ * list_to_strings - Transforms linked list to a sequence of strings
+* @head: Memory reference to first node
+*
+* Return: Sequence of strings
+*/
 char **list_to_strings(list_t *head)
 {
 	list_t *node = head;
@@ -55,11 +55,11 @@ char **list_to_strings(list_t *head)
 
 
 /**
- * print_list - prints all elements of a list_t linked list
- * @h: pointer to first node
- *
- * Return: size of list
- */
+ * print_list - Outputs entire elements of a linked list
+* @h: Memory address of first node
+*
+* Return: Number of nodes in he lest
+*/
 size_t print_list(const list_t *h)
 {
 	size_t i = 0;
@@ -78,13 +78,13 @@ size_t print_list(const list_t *h)
 }
 
 /**
- * node_starts_with - returns node whose string starts with prefix
- * @node: pointer to list head
- * @prefix: string to match
- * @c: the next character after prefix to match
- *
- * Return: match node or null
- */
+ * node_starts_with - Retrieves the node whose string begins with a prefix
+* @node: Memory address to the head of the list
+* @prefix: String serach for as prefix
+* @c: Char to match after prefix
+*
+* Return: Node that is matched, or NULL if no match is found.
+*/
 list_t *node_starts_with(list_t *node, char *prefix, char c)
 {
 	char *p = NULL;
@@ -100,12 +100,12 @@ list_t *node_starts_with(list_t *node, char *prefix, char c)
 }
 
 /**
- * get_node_index - gets the index of a node
- * @head: pointer to list head
- * @node: pointer to the node
- *
- * Return: index of node or -1
- */
+ * get_node_index - Retrieves the node index
+* @head: Memory address to the head of the list
+* @node: Memory address of the node
+*
+* Return: Outputs Index of the node, -1 if no node is found
+*/
 ssize_t get_node_index(list_t *head, list_t *node)
 {
 	size_t i = 0;
