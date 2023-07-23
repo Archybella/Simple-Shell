@@ -1,11 +1,10 @@
 #include "shell.h"
 
 /**
-* handle_exit - exits the shell
-* @info: Structure containing potential arguments. Used to maintain
-* constant function prototype.
-* Return: exits with a given exit status
-* (0) if info.argv[0] != "exit"
+* handle_exit -  exit command to terminate the shell
+* @info: arguing prototypes within structures for consistency
+*
+* Return: 1 for success and 0 for otherwise
 */
 int handle_exit(info_t *info)
 {
@@ -29,11 +28,10 @@ int handle_exit(info_t *info)
 }
 
 /**
-* handle_cd - changes the current directory of the process
-* @info: Structure containing potential arguments. Used to maintain
-* constant function prototype.
+* handle_cd - changes the current directory
+* @info: arguing prototypes within structures for consistency
 *
-* Return: Always 0
+* Return: Always 0 (Success)
 */
 int handle_cd(info_t *info)
 {
@@ -80,11 +78,10 @@ int handle_cd(info_t *info)
 }
 
 /**
-* handle_help - changes the current directory of the process
-* @info: Structure containing potential arguments. Used to maintain
-* constant function prototype.
+* handle_help - handles the 'help' command
+* @info: arguing prototypes within structures for consistency
 *
-* Return: Always 0
+* Return: always 0 (Success)
 */
 int handle_help(info_t *info)
 {
