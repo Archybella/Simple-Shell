@@ -1,13 +1,14 @@
 #include "shell.h"
 
 /**
- * input_buf - buffers chained commands
- * @info: parameter struct
- * @buf: address of buffer
- * @len: address of len var
- *
- * Return: bytes read
- */
+* input_buffer - Sequences of commands linked together by buffers
+* @info: parameter data structure
+* @buffer: buffer's memory location
+* @length: variable-length address
+*
+* Return: number of bytes received
+*/
+
 ssize_t input_buf(info_t *info, char **buf, size_t *len)
 {
     ssize_t r = 0;
@@ -45,11 +46,11 @@ ssize_t input_buf(info_t *info, char **buf, size_t *len)
 }
 
 /**
- * get_input - gets a line minus the newline
- * @info: parameter struct
- *
- * Return: bytes read
- */
+* get_input_buffer - Obtains a line devoid of the newline character
+* @info: parameter data structure
+*
+* Return: number of bytes received
+*/
 ssize_t get_input(info_t *info)
 {
     static char *buf; /* the ';' command chain buffer */
@@ -88,13 +89,13 @@ ssize_t get_input(info_t *info)
 }
 
 /**
- * read_buf - reads a buffer
- * @info: parameter struct
- * @buf: buffer
- * @i: size
- *
- * Return: r
- */
+* read_buffer - retrieves content from a data
+* @info: parameter data structure
+* @buffer: data storage buffer
+* @index: dimension
+*
+* Return: number of bytes received
+*/
 ssize_t read_buf(info_t *info, char *buf, size_t *i)
 {
     ssize_t r = 0;
@@ -108,13 +109,13 @@ ssize_t read_buf(info_t *info, char *buf, size_t *i)
 }
 
 /**
- * _getline - gets the next line of input from STDIN
- * @info: parameter struct
- * @ptr: address of pointer to buffer, preallocated or NULL
- * @length: size of preallocated ptr buffer if not NULL
- *
- * Return: s
- */
+* get_line - Retrieves the subsequent input line from STDIN
+* @info: parameter data struct
+* @ptr: Pointer buffer's address, either preassigned or NULL
+* @length: if the preallocated ptr buffer is not NULL, determine the size
+*
+* Return: s
+*/
 ssize_t _getline(info_t *info, char **ptr, size_t *length)
 {
     static char buf[READ_BUF_SIZE];
@@ -150,10 +151,11 @@ ssize_t _getline(info_t *info, char **ptr, size_t *length)
 }
 
 /**
- * sigintHandler - blocks ctrl-C
- * @sig_num: the signal number
+ * sigintHandler -  A signal handler function
+ * to block the CTRL-C (SIGINT) signal.
+ * @sig_num: The signal no. that triggered the handler (unused in this function).
  *
- * Return: void
+ * Return: This function doesn't return any value.
  */
 void sigintHandler(__attribute__((unused))int sig_num)
 {
