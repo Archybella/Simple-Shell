@@ -178,7 +178,7 @@ int handle_alias(info_t *);
 
 /* toem_get_line.c */
 ssize_t get_input(info_t *);
-int _getline(info_t *, char **, size_t *);
+ssize_t _getline(info_t *info, char **ptr, size_t *length);
 void sigintHandler(int);
 
 /* toem_get_information.c */
