@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * _strncpy - copies a string
- * @dest: the destination string to be copied to
- * @src: the source string
- * @n: the amount of characters to be copied
- * Return: the concatenated string
- */
+ * _strncpy - Performs a string copy operation
+* @dest: Pointer to the destination string where the copy will be stored
+* @src: Pointer to the source string to be copied
+* @n: The maximum number of characters to be copied
+* Return: Pointer to the destination string
+*/
 char *_strncpy(char *dest, char *src, int n)
 {
 	int i;
@@ -32,12 +32,12 @@ char *_strncpy(char *dest, char *src, int n)
 }
 
 /**
- * *_strncat - concatenates two strings
- * @dest: the first string
- * @src: the second string
- * @n: the amount of bytes to be maximally used
- * Return: the concatenated string
- */
+ * *_strncat - Performs a string concatenation operation
+*@dest: Pointer to the destination string where merging is performed
+*@src: Pointer to the source string to be merged(concantated)
+*@n: The maximum number of bytes to be used for merging
+*Return: Pointer to the merged string
+*/
 char *_strncat(char *dest, char *src, int n)
 {
 	int i, j;
@@ -59,11 +59,11 @@ char *_strncat(char *dest, char *src, int n)
 }
 
 /**
- * *_strchr - locates a character in a string
- * @s: the string to be parsed
- * @c: the character to look for
- * Return: (s) a pointer to the memory area s
- */
+ * *_strchr - searches for a character within a string
+* @s: the string to be examined
+* @c: the character to be found
+* Return: (s) a pointer to the memory location of the character
+*/
 char *_strchr(char *s, char c)
 {
 	do {
