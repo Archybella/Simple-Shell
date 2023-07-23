@@ -1,24 +1,22 @@
 #include "shell.h"
 
 /**
- * handle_env - prints the current environment
- * @info: Structure containing potential arguments. Used to maintain
- * constant function prototype.
- * Return: Always 0
- */
+* handle_env - responsible for printing current environment
+* @info: parameter holding potential arguments. Maintains
+* constant function prototype.
+* Return: consistently 0
+*/
 int handle_env(info_t *info)
 {
 	print_list_str(info->env);
 	return (0);
 }
-
 /**
- * _getenv - gets the value of an environ variable
- * @info: Structure containing potential arguments. Used to maintain
- * @name: env var name
- *
- * Return: the value
- */
+*_getenv - retrieves the value of environment variable
+* @name: environment variable name
+*
+* Return: value of the environment variable
+*/
 char *_getenv(info_t *info, const char *name)
 {
 	list_t *node = info->env;
@@ -35,12 +33,11 @@ char *_getenv(info_t *info, const char *name)
 }
 
 /**
- * handle_setenv - Initialize a new environment variable,
- * or modify an existing one
- * @info: Structure containing potential arguments. Used to maintain
- * constant function prototype.
- * Return: Always 0
- */
+ * handle_setenv - creates a new environment variable or updates an existing one
+* @info: parameter holding potential arguments. Maintains
+* constant function prototype.
+* Return: consistently 0
+*/
 int handle_setenv(info_t *info)
 {
 	if (info->argc != 3)
@@ -54,11 +51,11 @@ int handle_setenv(info_t *info)
 }
 
 /**
- * handle_unsetenv - Remove an environment variable
- * @info: Structure containing potential arguments. Used to maintain
- * constant function prototype.
- * Return: Always 0
- */
+ * handle_unsetenv - deletes environment variables
+* @info: parameter holding potential arguments. Maintains
+* constant function prototype.
+* Return: consistently 0
+*/
 int handle_unsetenv(info_t *info)
 {
 	int i;
@@ -75,11 +72,11 @@ int handle_unsetenv(info_t *info)
 }
 
 /**
- * populate_env_list - populates env linked list
- * @info: Structure containing potential arguments. Used to maintain
- * constant function prototype.
- * Return: Always 0
- */
+ * populate_env_list - Fills the environment linked list
+* @info: parameter holding potential arguments. Maintains
+* constant function prototype.
+* Return: consistently 0
+*/
 int populate_env_list(info_t *info)
 {
 	list_t *node = NULL;
