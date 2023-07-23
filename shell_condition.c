@@ -1,24 +1,24 @@
 #include "shell.h"
 
 /**
- * interactive - returns true if shell is interactive mode
- * @info: struct address
- *
- * Return: 1 if interactive mode, 0 otherwise
- */
+* interactive - checks whether the shell is in interactive mode
+* @info: Address indicator to the input structure
+*
+* Return: 1 if the shell is in interactive mode, 0 otherwise
+*/
 static int interactive(info_t *info)
 {
 	return (isatty(STDIN_FILENO) && info->readfd <= 2);
 }
 
 /**
-* find_builtin - finds a builtin command
-* @info: the parameter & return info struct
+* find_builtin - searches for a built-in command
+* @info: Address indicator to the input structure
 *
-* Return: -1 if builtin not found,
-* 0 if builtin executed successfully,
-* 1 if builtin found but not successful,
-* 2 if builtin signals exit()
+* Return: -1 if the built-in command is absent,
+*         0 if the built-in command is processed effectively,
+*         1 if the built-in command is found but not effective,
+*         2 if the built-in command triggers an exit()
 */
 static int find_builtin(info_t *info)
 {
@@ -46,10 +46,10 @@ static int find_builtin(info_t *info)
 }
 
 /**
-* fork_cmd - forks a an exec thread to run cmd
-* @info: the parameter & return info struct
+* fork_cmd - creates a child process to execute a command
+* @info: Memory address to the input structure
 *
-* Return: void
+* Return: No return value.
 */
 static void fork_cmd(info_t *info)
 {
@@ -84,10 +84,10 @@ static void fork_cmd(info_t *info)
 }
 
 /**
-* find_cmd - finds a command in PATH
-* @info: the parameter & return info struct
+* find_cmd - searches for a command in the PATH
+* @info: Memory address to the input structure
 *
-* Return: void
+* Return: No return value
 */
 static void find_cmd(info_t *info)
 {
@@ -126,11 +126,11 @@ static void find_cmd(info_t *info)
 }
 
 /**
-* hsh - main shell loop
-* @info: the parameter & return info struct
-* @av: the argument vector from main()
+* hsh - Primary loop of the shell
+* @info: Memory address to the input structure
+* @av: Array of command-line arguments passed to the main function
 *
-* Return: 0 on success, 1 on error, or error code
+* Return: 0 on success, 1 if there is an error, else error code
 */
 int hsh(info_t *info, char **av)
 {
