@@ -167,7 +167,8 @@ ssize_t _getline(info_t *info, char **ptr, size_t *length)
 /**
  * sigintHandler - A signal handler function
  * to block the CTRL-C (SIGINT) signal.
- * @sig_num: The signal no. that triggered the handler (unused in this function).
+ * @sig_num: The signal no. that triggered
+ * the handler (unused in this function).
  *
  * Return: This function doesn't return any value.
  */
