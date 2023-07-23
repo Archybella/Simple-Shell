@@ -1,13 +1,15 @@
 #include "shell.h"
 
 /**
-* is_chain - test if current char in buffer is a chain delimeter
-* @info: the parameter struct
-* @buf: the char buffer
-* @p: address of current position in buf
-*
-* Return: 1 if chain delimeter, 0 otherwise
-*/
+ * is_chain - Test if the current character 
+ * in the buffer is a chain delimiter.
+ * @info: The parameter struct containing various shell-related data.
+ * @buf: The character buffer containing the shell command.
+ * @p: Address of the current position in the buffer.
+ *
+ * Return: 1 if the current character is a chain delimiter, 0 otherwise.
+ */
+
 int is_chain(info_t *info, char *buf, size_t *p)
 {
 	size_t j = *p;
@@ -37,12 +39,12 @@ int is_chain(info_t *info, char *buf, size_t *p)
 }
 
 /**
-* check_chain - checks we should continue chaining based on last status
-* @info: the parameter struct
-* @buf: the char buffer
-* @p: address of current position in buf
+* check_chain - check if the current char in the buf is a delimiter for a chain
+* @info: parameter data structure
+* @buf: character storage
+* @p: location of current position in buffer
 * @i: i
-* @len: len
+* @len: the length
 *
 * Return: Void
 */
@@ -104,6 +106,7 @@ int replace_alias(info_t *info)
 }
 
 /**
+* replace_vars - 
 * replace_vars - replaces vars in the tokenized string
 * @info: the parameter struct
 *
