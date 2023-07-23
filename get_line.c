@@ -1,5 +1,12 @@
 #include "shell.h"
-
+/**
+ * input_buf - Sequences of commands linked together by buffers
+ * @info: parameter data structure
+ * @buf: buffer's memory location
+ * @len: variable-length address
+ *
+ * Return: number of bytes received
+ */
 ssize_t input_buf(info_t *info, char **buf, size_t *len)
 {
 	ssize_t r = 0;
@@ -37,7 +44,12 @@ ssize_t input_buf(info_t *info, char **buf, size_t *len)
 	}
 	return (r);
 }
-
+/**
+ * get_input - Obtains a line devoid of the newline character
+ * @info: parameter data structure
+ *
+ * Return: number of bytes received
+ */
 ssize_t get_input(info_t *info)
 {
 	static char *buf; /* the ';' command chain buffer */
@@ -79,7 +91,14 @@ ssize_t get_input(info_t *info)
 	*buf_p = buf; /* else not a chain, pass back the buffer from _getline() */
 	return (r); /* return the length of the buffer from _getline() */
 }
-
+/**
+ * read_buf - retrieves content from a data
+ * @info: parameter data structure
+ * @buf: data storage buffer
+ * @i: dimension
+ *
+ * Return: number of bytes received
+ */
 ssize_t read_buf(info_t *info, char *buf, size_t *i)
 {
 	ssize_t r = 0;
@@ -94,7 +113,14 @@ ssize_t read_buf(info_t *info, char *buf, size_t *i)
 
 	return (r);
 }
-
+/**
+ * _getline - Retrieves the subsequent input line from STDIN
+ * @info: parameter data struct
+ * @ptr: Pointer buffer's address, either preassigned or NULL
+ * @length: if the preallocated ptr buffer is not NULL, determine the size
+ *
+ * Return: s
+ */
 ssize_t _getline(info_t *info, char **ptr, size_t *length)
 {
 	static char buf[READ_BUF_SIZE];
@@ -138,7 +164,13 @@ ssize_t _getline(info_t *info, char **ptr, size_t *length)
 	*ptr = p;
 	return (s);
 }
-
+/**
+ * sigintHandler - A signal handler function
+ * to block the CTRL-C (SIGINT) signal.
+ * @sig_num: The signal no. that triggered the handler (unused in this function).
+ *
+ * Return: This function doesn't return any value.
+ */
 void sigintHandler(__attribute__((unused)) int sig_num)
 {
 	_puts("\n");
