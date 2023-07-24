@@ -106,7 +106,6 @@ int replace_alias(info_t *info)
 }
 
 /**
-* replace_vars -
 * replace_vars - replaces vars in the tokenized string
 * @info: the parameter struct
 *
