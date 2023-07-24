@@ -33,7 +33,7 @@ char *_getenv(info_t *info, const char *name)
 }
 
 /**
- * handle_setenv - creates a new environment variable or updates an existing one
+* handle_setenv - creates a new environment variable or updates an existing one
 * @info: parameter holding potential arguments. Maintains
 * constant function prototype.
 * Return: consistently 0
