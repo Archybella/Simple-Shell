@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * is_chain - Test if the current character 
+ * is_chain - Test if the current character
  * in the buffer is a chain delimiter.
  * @info: The parameter struct containing various shell-related data.
  * @buf: The character buffer containing the shell command.
@@ -106,7 +106,7 @@ int replace_alias(info_t *info)
 }
 
 /**
-* replace_vars - 
+* replace_vars -
 * replace_vars - replaces vars in the tokenized string
 * @info: the parameter struct
 *
